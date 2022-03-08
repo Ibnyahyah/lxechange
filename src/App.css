@@ -1,0 +1,39 @@
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+}
+
+.auth{
+  background-image: linear-gradient(10deg, black, rgb(13, 41, 58));
+  min-height: 100vh;
+}
+.auth input{
+  padding: 15px 5px;
+  margin: 10px 0;
+  width: 100%;
+}
+.auth button{
+  padding:15px 5px;
+  width: 103%;
+  margin:10px 0;
+}
+.rate-container{
+  min-height: 100vh;
+}
+.rate-container select{
+  padding: 15px 5px;
+  margin: 10px 0;
+  width: 100%;
+}
+.rate-container input{
+  padding: 15px 5px;
+  margin: 10px 0;
+  width: 98%;
+}
+.rate-container button{
+  padding:15px 5px;
+  width: 100%;
+  margin:10px 0;
+}
