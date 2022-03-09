@@ -4,7 +4,6 @@ import Transaction from "../components/transactions/transaction";
 import { auth } from '../firebase';
 
 import { useAuth } from '../context/authContext'
-import { useEffect } from "react";
 
 function Dashboard(){
     const navigate = useNavigate();
