@@ -4,7 +4,7 @@ function Footer(){
     return(
         <>
             <footer className="text-white container pb-3 pt-3">
-                <div className="row mb-2">
+                <div className="row mb-2 justify-space-between">
                     <div className="col-6-sm col-6-sm">
                         <ul>
                             <li className="font-4 font-lg">Company</li>

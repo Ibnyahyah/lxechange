@@ -39,3 +39,14 @@ body{
   width: 100%;
   margin:10px 0;
 }
+@media screen  and (max-width:720px){
+  nav{
+    display:flex;
+    flex-direction: column;
+  }
+  .rates .card{
+    width: 93vw;
+    margin-left:-7px;
+  }
+
+}

@@ -2,13 +2,24 @@ import { useEffect, useState } from "react";
 import NavBar from "../components/nav-bar/nav";
 import Rates from "../components/Rate/rate";
 
+import { useNavigate } from "react-router-dom";
+
+import axios from 'axios'; 
+import { useAuth } from "../context/authContext";
+
 function Rate(){
+
+    const { user } = useAuth()
+
     const [exchangeCoin, setExchangeCoin] = useState('');
     const [amountRef, setAmountRef] = useState(0);
     const Rate = 585;
     const [transcationvalue, setTransactionvalue] = useState(0);
     const [transcationType, setTransactionType] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [text, setText] = useState('');
 
+    const navigate = useNavigate();
     
     console.log(exchangeCoin, transcationType, transcationvalue, amountRef);
     const data = {
@@ -17,18 +28,33 @@ function Rate(){
         Total: transcationvalue,
         amountUsdt:  amountRef,
     }
-    console.log(data);
+    JSON.stringify(data)
     useEffect(()=>{
         const totalvalue = Rate * amountRef;
         setTransactionvalue(totalvalue);
     },[amountRef]);
+
+
+    const handlerSubmit = async (e) =>{
+        e.preventDefault()
+        if(user){
+            await axios.post("https://lsexchange-25610-default-rtdb.firebaseio.com/data.json", data);
+            setText("Successful")
+            setLoading(true)
+
+        }else{
+            setText("Please Login");
+
+            navigate("/login")
+        }
+    }
     
     return(
         <>
             <NavBar/>
             <section className="rate-container display-f align-center pt-5 pb-3">
             <div className="container">
-                <div className="text-center mb-2">
+                <div className="text-center mb-2 text-white">
                     <p>Best Rate You can Get</p>
                     <div className="font-4 font-xxl">Rate</div>
                 </div>
@@ -40,7 +66,7 @@ function Rate(){
                                 <p>Know the current value of your Transaction</p>
                             </div>
                             <button className="btn font-3 font-lg mt-1 mb-1">Cryptocurrency</button>
-                            <form action="">
+                            <form onSubmit={handlerSubmit}>
                                 <label htmlFor="transactionType">Select Transaction Type
                                     <select name="" id="transactionType" onChange={(e)=> setTransactionType(e.target.value)}>
                                         <option value="null">Selcet Transaction Type</option>
@@ -63,7 +89,7 @@ function Rate(){
                                 <label htmlFor="amount">Amount
                                     <input type="number" name="" id="amount" onChange={(e)=>setAmountRef(e.target.value)} placeholder="Enter Your Amount in USDT" />
                                 </label>
-                                <button className="btn font-3">Trade Now</button>
+                                {loading?<button className="btn font-3" disable="true">loading...</button>:<button className="btn font-3">Trade Now</button>}
                             </form>
                         </div>
                     </div>
@@ -72,6 +98,7 @@ function Rate(){
                             <h1 className="font-4 font-xl">Total Payout</h1>
                             <p className="font-xl text-green">NGN {transcationvalue? transcationvalue :'00.00'}</p>
                             <p className="text-gray">Rate : #{Rate}</p>
+                            <p className="text-green">{text}</p>
                         </div>
                     </div>
                 </div>

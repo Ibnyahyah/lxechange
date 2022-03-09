@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
             setUser(user);
             setLoading(false);
 
-            if(user)navigate('/user/dashboard')
+            // if(user)navigate('/user/dashboard' || '/rate')
         })
     }, [ user, setLoading, navigate]);
 
