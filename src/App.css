@@ -4,7 +4,9 @@
   left:0;
   right:0;
 }
-
+body{
+  background-image: linear-gradient(10deg, black, rgb(13, 41, 58)); 
+}
 .auth{
   background-image: linear-gradient(10deg, black, rgb(13, 41, 58));
   min-height: 100vh;

@@ -1,7 +1,7 @@
 function Transaction(){
     return(
         <>
-        <h1 classname="mb-1 font-3 font-lg text-gray">Recent Transaction</h1>
+        <h1 className="mb-1 font-3 font-lg text-gray">Recent Transaction</h1>
             <table style={{width:'100%'}}>
                 <thead className="bg-black text-white">
                     <tr>
