@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Footer from "../components/footer/footer";
 import NavBar from "../components/nav-bar/nav";
 import { RateData } from "../components/Rate/dummy";
+import Transaction from "../components/transactions/transaction";
 
 function Trade(){
 
@@ -19,7 +22,7 @@ function Trade(){
     return(
         <>
             <NavBar/>
-            <div className="container pt-5 pb-3">
+            <div className="container pt-5 pb-5 text-white">
                 <div className="display-f justify-space-between">
                     <div className="header">
                         <h1 className="font-4 font-xl">Trade Your Crypto(coins)</h1>
@@ -30,22 +33,26 @@ function Trade(){
                         <button style={{padding:'10px', width:'97%', marginTop:'5px'}} className="btn" onChange={(e)=>setSearchTerm(e.target.value)}>Seacrh</button>
                     </form>    
                 </div>
-                <div className="row gap-1 mt-3">
+                <div className="row gap-1 mt-3 text-black">
                 {RateData.map((data, index)=>{
                     return(
                         <div className="col-6-sm col-3-md" key={index}>
-                            <div className="card bg-gray-light-9 text-center">
-                                <img className="br-full" src={data.image} style={{width:'100px', height:'100px'}} alt=""/>
-                                <h2>{data.coin}</h2>
-                                <p>Naira (NGN)</p>
-                                <hr className="mt-1 mb-1"/>
-                                <p>Buy:{data.buy} | Sell: {data.sell}</p>
-                            </div>
+                            <Link to={`/trade/coin/${data.symbol}`}>
+                                <div className="card bg-gray-light-9 display-f text-center">
+                                    <img className="br-full" src={data.image} style={{width:'50px', height:'50px'}} alt=""/>
+                                    <h2 className="font-md">{data.coin}</h2>
+                                    <p>Naira (NGN)</p>
+                                    <hr className="mt-1 mb-1"/>
+                                    <p>Buy:{data.buy} | Sell: {data.sell}</p>
+                                </div>
+                            </Link>
                         </div>
                     )
                 })}
             </div>
+                <Transaction/>
             </div>
+            <Footer/>
         </>
     )
 }

@@ -11,7 +11,7 @@ export const RateData = [
         image:'./images/btc.png',
         coin:'Bitcoin (BTC)',
         currency:'Naira NGN',
-        symbol:'Bnb',
+        symbol:'Btc',
         buy:'585',
         sell:'600'
     },
@@ -19,7 +19,7 @@ export const RateData = [
         image:'./images/ethereum.jpg',
         coin:'Ethereum (ETH)',
         currency:'Naira NGN',
-        symbol:'Bnb',
+        symbol:'Eth',
         buy:'585',
         sell:''
     },
@@ -27,7 +27,7 @@ export const RateData = [
         image:'./images/dogecoin.jpg',
         coin:'Doge coin (DOGE)',
         currency:'Naira NGN',
-        symbol:'Bnb',
+        symbol:'Doge',
         buy:'585',
         sell:'590'
     },
@@ -35,7 +35,7 @@ export const RateData = [
         image:'./images/perfectmoney.jpg',
         coin:'PERFECT MONEY (PM)',
         currency:'Naira NGN',
-        symbol:'Bnb',
+        symbol:'Pm',
         buy:'585',
         sell:'585'
     },
@@ -51,15 +51,15 @@ export const RateData = [
         image:'./images/tetheer.jpg',
         coin:'USDT (TRC20)',
         currency:'Naira NGN',
-        symbol:'Bnb',
+        symbol:'Usdt',
         buy:'585',
         sell:'600'
     },
     {
         image:'./images/deriv.jpg',
-        coin:'DERIV/BINARY USD',
+        coin:'DERIV USD',
         currency:'Naira NGN',
-        symbol:'Bnb',
+        symbol:'Deriv',
         buy:'585',
         sell:'600'
     }

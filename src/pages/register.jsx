@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-import "firebase/app";
-import firebase from "firebase";
-import {auth} from "../firebase";
+import { useAuth } from "../context/authContext";
 
 function Register(){
+    const { handleGoogleSignIn } = useAuth()
     return(
         <>
              <div className="container-fluid auth display-f align-center">
@@ -36,7 +35,7 @@ function Register(){
                                 </div>
                                 <div className="button">
                                     <button className="btn-outlined-red" 
-                                    onClick={()=> auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider())}>Login With Google</button>
+                                    onClick={handleGoogleSignIn}>Login With Google</button>
                                     {/* <button className="btn-outlined-blue" 
                                     onClick={()=> auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider())}>Login With Facebook</button> */}
                                 </div>

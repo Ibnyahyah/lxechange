@@ -27,6 +27,8 @@ function Rate(){
         transcationType: transcationType,
         Total: transcationvalue,
         amountUsdt:  amountRef,
+        username:user.displayName,
+        email: user.email
     }
     JSON.stringify(data)
     useEffect(()=>{
