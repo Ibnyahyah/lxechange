@@ -39,7 +39,7 @@ const { handleGoogleSignIn } = useAuth();
                                 </div>
                             </div>
                         </div>
-                        <div className="col-6-sm">
+                        <div className="col-6-sm auth-logo">
                             <div className="display-f justify-center align-center text-center mt-5" style={{minHeight:'100%'}}>
                                 <p className="font-4 font-xxl text-white">lsExchanges</p>
                             </div>

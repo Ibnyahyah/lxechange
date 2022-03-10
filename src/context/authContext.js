@@ -1,7 +1,10 @@
 import React, {useContext, useState, useEffect} from 'react';
+import { getAuth, signInWithPopup,  GoogleAuthProvider,signOut } from "firebase/auth";
+
 import { useNavigate } from 'react-router-dom';
 
-import { getAuth, signInWithPopup,  GoogleAuthProvider } from "firebase/auth";
+import initializeAuthentication from '../firebase';
+
 
 
 const AuthContext = React.createContext();
@@ -11,28 +14,40 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
+    const [error, setError] = useState('');
 
     const navigate = useNavigate();
 
-    
     const provider = new GoogleAuthProvider();
     
     const handleGoogleSignIn = ()=>{
-        const auth = getAuth();
+        const auth = getAuth(initializeAuthentication);
         signInWithPopup(auth, provider)
         .then(result => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
             const user = result.user;
-            console.log(user)
-            localStorage.setItem('lsUser',JSON.stringify(user))
-            if(user)navigate('/user/dashboard');
+            localStorage.setItem('lsUser',JSON.stringify(user));
+            console.log(token)
+            if(user)navigate("/user/dashboard");
+        }).catch((error) => {
+            // Handle Errors here.
+            // const errorCode = error.code;
+            setError(error.message);
+            // The email of the user's account used.
+            // const email = error.email;
+            // The AuthCredential type that was used.
+            // const credential = GoogleAuthProvider.credentialFromError(error);
         })
 
     }
     const userlx = JSON.parse(localStorage.getItem("lsUser"))
 
     const handleLogout = async () =>{
-        // const auth = getAuth();
-        // await signOut(auth);
+        const auth = getAuth(initializeAuthentication);
+        await signOut(auth);
         
         localStorage.removeItem("lsUser")
 
@@ -40,18 +55,19 @@ export const AuthProvider = ({ children }) => {
     }
 
     useEffect(()=>{
-        const result =()=>{
+        var result = ()=>{
             setUser(user);
             setLoading(false);
-        }
-        result();
+        };
+        result()
     }, [ user, setLoading, navigate]);
 
     const value = {
         user:userlx,
         handleGoogleSignIn: handleGoogleSignIn,
         handleLogout:handleLogout,
-        loading:loading
+        loading:loading,
+        error:error
     }
     return(
         <AuthContext.Provider value={value}>

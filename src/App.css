@@ -113,8 +113,11 @@ input{
     display:flex;
     flex-direction: column;
   }
+  .auth-logo{
+    display: none;
+  }
   .rates .card{
-    width: 93vw;
+    width: 93vwent;
     margin:auto;
   }
 

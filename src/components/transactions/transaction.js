@@ -45,7 +45,7 @@ function Transaction(){
                 </thead>
                 {transactions.map((data, index)=>(
                         <tbody>
-                            <tr key={index}>
+                            <tr key={data.Date}>
                                 <td>NAN</td>
                                 <td>{data.TradeType}</td>
                                 <td>&#8358;{data.TotalAmountInNaira}</td>
