@@ -11,7 +11,7 @@ function TopCarosel(){
                         <h1 className="font-xxl">Welcome to lxExchange</h1>
                         <h1 className="font-lg font-3 text-white">Buy and Sell Crypto At Sweet Rate</h1>
                         <p className="mb-3">Buy Bitcoin, Ethereum, Tron, Doge, Usdt from Us.</p>
-                        <marquee behavior="alternate" direction="left">Contact Us? If You Have A Question 08129418741</marquee>
+                        <p>Contact Us? If You Have A Question 08129418741</p>
                     </div>
                 </div>
             </div>

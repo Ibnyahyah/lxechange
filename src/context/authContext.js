@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { getAuth, signInWithPopup,  GoogleAuthProvider, signOut } from "firebase/auth";
+import { getAuth, signInWithPopup,  GoogleAuthProvider } from "firebase/auth";
 
 
 const AuthContext = React.createContext();
@@ -29,12 +29,13 @@ export const AuthProvider = ({ children }) => {
 
     }
     const userlx = JSON.parse(localStorage.getItem("lsUser"))
-    console.log(userlx)
+
     const handleLogout = async () =>{
-        const auth = getAuth();
-        await signOut(auth);
+        // const auth = getAuth();
+        // await signOut(auth);
         
         localStorage.removeItem("lsUser")
+
         navigate('/');
     }
 
