@@ -5,6 +5,8 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeAuthentication from "../firebase";
 
+
+initializeAuthentication();
 function Register(){
     const { handleGoogleSignIn } = useAuth();
 
@@ -19,7 +21,6 @@ function Register(){
     
     const submitHandler = (e)=>{
         e.preventDefault();
-        initializeAuthentication()
         const auth = getAuth();
         if(password === confirmPassword){
             createUserWithEmailAndPassword(auth, email, password)

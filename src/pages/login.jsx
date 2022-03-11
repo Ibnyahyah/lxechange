@@ -5,6 +5,8 @@ import { useAuth } from "../context/authContext";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import initializeAuthentication from "../firebase";
 
+
+initializeAuthentication();
 function Login(){
 const { handleGoogleSignIn } = useAuth();
 
