@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 
@@ -12,7 +12,6 @@ const { handleGoogleSignIn } = useAuth();
 
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('');
-const [user, setUser] = useState(null);
 const [text, setText] = useState('');
 const [message, setMessage] = useState('');
 
@@ -26,7 +25,7 @@ const submitHandler = (e)=>{
     signInWithEmailAndPassword(auth,email,password)
     .then((userCredential) => {
         // Signed in 
-        setUser(userCredential.user);
+        const user = userCredential.user;
         localStorage.setItem("lsUser",JSON.stringify(user));
         setText("Successfull")
         if(user)navigate('/user/dashboard');
@@ -38,9 +37,6 @@ const submitHandler = (e)=>{
     });
 }
 
-useEffect(()=>{
-    if(user)navigate('/user/dashboard');
-},[user,navigate]);
 
     return(
         <>

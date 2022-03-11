@@ -13,7 +13,6 @@ function Register(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [user, setUser] = useState(null);
     const [text, setText] = useState("");
     const [message, setMessage] = useState("");
 
@@ -27,7 +26,7 @@ function Register(){
             .then((userCredential) => {
             // Signed in 
             
-            setUser(userCredential.user);
+            const user = userCredential.user;
             localStorage.setItem("lsUser",JSON.stringify(user));
             setText("Successfull")
             if(user)navigate('/user/dashboard');
