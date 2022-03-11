@@ -107,6 +107,12 @@ input{
   background-color: lightgray;
   margin-top:8px;
 }
+.search-form{
+  width: 280px !important;;
+}
+.searched-details, .trade-container form input{
+  width:90%;
+}
 
 @media screen  and (max-width:720px){
   nav{
@@ -119,6 +125,17 @@ input{
   .rates .card{
     width: 93vwent;
     margin:auto;
+  }
+  .trade-container{
+    display:flex;
+    flex-direction:column !important;
+    flex-wrap: wrap;
+  }
+  .trade-container .header{
+    width: 100%;
+  }
+  .trade-container form{
+    width: 100%;
   }
 
 }
