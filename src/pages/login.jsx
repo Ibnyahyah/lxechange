@@ -29,6 +29,7 @@ const submitHandler = (e)=>{
         setUser(userCredential.user);
         localStorage.setItem("lsUser",JSON.stringify(user));
         setText("Successfull")
+        if(user)navigate('/user/dashboard');
     })
     .catch((error) => {
         setText(error.code);

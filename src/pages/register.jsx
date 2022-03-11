@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import initializeAuthentication from "../firebase";
 
 
@@ -28,8 +28,9 @@ function Register(){
             // Signed in 
             
             setUser(userCredential.user);
-            setText("Successfull")
             localStorage.setItem("lsUser",JSON.stringify(user));
+            setText("Successfull")
+            if(user)navigate('/user/dashboard');
 
             })
             .catch((error) => {
@@ -41,10 +42,6 @@ function Register(){
             setMessage("password not correct")
         }
     }
-
-    useEffect(()=>{
-        if(user)navigate('/user/dashboard');
-    },[user, navigate]);
 
     return(
         <>
