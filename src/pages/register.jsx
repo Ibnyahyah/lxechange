@@ -1,8 +1,50 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useEffect, useState } from "react";
+import initializeAuthentication from "../firebase";
+
 function Register(){
-    const { handleGoogleSignIn } = useAuth()
+    const { handleGoogleSignIn } = useAuth();
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [user, setUser] = useState(null);
+    const [text, setText] = useState("");
+    const [message, setMessage] = useState("");
+
+    const navigate = useNavigate()
+    
+    const submitHandler = (e)=>{
+        e.preventDefault();
+        initializeAuthentication()
+        const auth = getAuth();
+        if(password === confirmPassword){
+            createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+            // Signed in 
+            
+            setUser(userCredential.user);
+            setText("Successfull")
+            localStorage.setItem("lsUser",JSON.stringify(user));
+
+            })
+            .catch((error) => {
+                setText(error.code);
+                setMessage(error.message);
+                // ..
+            });
+        }else{
+            setMessage("password not correct")
+        }
+    }
+
+    useEffect(()=>{
+        if(user)navigate('/user/dashboard');
+    },[user, navigate]);
+
     return(
         <>
              <div className="container-fluid auth display-f align-center">
@@ -18,15 +60,17 @@ function Register(){
                                     <p className="font-4 font-lg mb-1">Resgister</p>
                                     <p>Register your account</p>
                                 </div>
-                                <form>
+                                <form onSubmit={submitHandler}>
+                                    {text?<p className="text-white text-center m-1 font-3 p-1 pl-3 pr-3 bg-red">{text}</p>:
+                                    message?<p className="text-white text-center m-1 font-3 p-1 pl-3 pr-3 bg-red">{message}</p>:null}
                                     <label htmlFor="email" className="font-3 text-white">E-mail
-                                        <input type="email" name="email" id="email" placeholder="Enter Your Valid E-mail" />
+                                        <input className="text-black" type="email" name="email" id="email" onChange={(e)=>{setEmail(e.target.value)}} placeholder="Enter Your Valid E-mail" />
                                     </label>
                                     <label htmlFor="password" className="font-3 text-white">Password
-                                        <input type="password" name="password" id="password" placeholder="Enter Your Valid Password"/>
+                                        <input type="password" className="text-black" name="password" id="password" onChange={(e)=>{setPassword(e.target.value)}} placeholder="Enter Your Valid Password"/>
                                     </label>
                                     <label htmlFor="confirmPassword" className="font-3 text-white">Comfirm Password
-                                        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Comfirm Your Valid Password"/>
+                                        <input type="password" className="text-black" name="confirmPassword" id="confirmPassword" onChange={(e)=>{setConfirmPassword(e.target.value)}} placeholder="Comfirm Your Valid Password"/>
                                     </label>
                                     <button>Register</button>
                                 </form>

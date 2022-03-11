@@ -30,21 +30,17 @@ export const AuthProvider = ({ children }) => {
             const token = credential.accessToken;
             // The signed-in user info.
             const user = result.user;
+
             localStorage.setItem('lsUser',JSON.stringify(user));
+
             console.log(token)
+            
             if(user)navigate("/user/dashboard");
         }).catch((error) => {
-            // Handle Errors here.
-            // const errorCode = error.code;
             setError(error.message);
-            // The email of the user's account used.
-            // const email = error.email;
-            // The AuthCredential type that was used.
-            // const credential = GoogleAuthProvider.credentialFromError(error);
         })
 
     }
-    const userlx = JSON.parse(localStorage.getItem("lsUser"))
 
     const handleLogout = async () =>{
         const auth = getAuth();
@@ -55,6 +51,8 @@ export const AuthProvider = ({ children }) => {
         navigate('/');
     }
 
+    const userlx = JSON.parse(localStorage.getItem("lsUser"))
+
     useEffect(()=>{
         var result = ()=>{
             setUser(user);
@@ -63,12 +61,13 @@ export const AuthProvider = ({ children }) => {
         result()
     }, [ user, setLoading, navigate]);
 
+
     const value = {
         user:userlx,
         handleGoogleSignIn: handleGoogleSignIn,
         handleLogout:handleLogout,
         loading:loading,
-        error:error
+        error:error,
     }
     return(
         <AuthContext.Provider value={value}>
