@@ -9,7 +9,6 @@ import initializeAuthentication from '../firebase';
 
 const AuthContext = React.createContext();
 
-initializeAuthentication();
 
 export const useAuth = () => useContext(AuthContext);
 
@@ -19,7 +18,7 @@ export const AuthProvider = ({ children }) => {
     const [error, setError] = useState('');
 
     const navigate = useNavigate();
-
+    initializeAuthentication();
     const provider = new GoogleAuthProvider();
     
     const handleGoogleSignIn = ()=>{
