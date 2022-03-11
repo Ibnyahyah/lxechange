@@ -9,6 +9,8 @@ import initializeAuthentication from '../firebase';
 
 const AuthContext = React.createContext();
 
+initializeAuthentication();
+
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
@@ -21,7 +23,7 @@ export const AuthProvider = ({ children }) => {
     const provider = new GoogleAuthProvider();
     
     const handleGoogleSignIn = ()=>{
-        const auth = getAuth(initializeAuthentication);
+        const auth = getAuth();
         signInWithPopup(auth, provider)
         .then(result => {
             // This gives you a Google Access Token. You can use it to access the Google API.
@@ -46,7 +48,7 @@ export const AuthProvider = ({ children }) => {
     const userlx = JSON.parse(localStorage.getItem("lsUser"))
 
     const handleLogout = async () =>{
-        const auth = getAuth(initializeAuthentication);
+        const auth = getAuth();
         await signOut(auth);
         
         localStorage.removeItem("lsUser")
