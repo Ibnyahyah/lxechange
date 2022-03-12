@@ -2,7 +2,7 @@ import { RateData } from "./dummy";
 
 export default function Rates({Rate}){
     return(
-        <div className="container mt-3 mb-3 text-white rates">
+        <div className={Rate?"mt-3 mb-3 text-white rates":"container mt-3 mb-3 text-white rates"}>
             {Rate?<h1 className="mb-1 text-white">Exchange Rate</h1>:
                 <>
                     <p className="font-lg font-2 text-white">Best Rate You Can Get</p>

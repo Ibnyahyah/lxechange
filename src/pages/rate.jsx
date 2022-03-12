@@ -56,9 +56,9 @@ function Rate(){
     return(
         <>
             <NavBar/>
-            <section className="rate-container display-f align-center pt-5 pb-5 mt-3">
-            <div>
+            <section className="rate-container pt-5 pb-5 mt-3">
                 <div className="container mt-2">
+
                     <div className="text-center mb-2 text-white">
                         <p>Best Rate You can Get</p>
                         <div className="font-4 font-xxl">Rate</div>
@@ -108,7 +108,6 @@ function Rate(){
                             
                         </div>
                     </div>
-                </div>
                     <Rates Rate/>
                 </div>
             </section>
