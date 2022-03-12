@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Footer from "../components/footer/footer";
 import NavBar from "../components/nav-bar/nav";
 import Transaction from "../components/transactions/transaction";
@@ -8,6 +10,15 @@ function Dashboard(){
     const { user } = useAuth();
     const userDetails = user.email.split(".")[0];
     const userEmail = userDetails.split("@")[0];
+
+    
+    const location = useLocation()
+    const pathname = location.pathname.split("/")[0];
+
+    useEffect(()=>{
+        window.scrollTo(0,0);
+    },[pathname])
+
     return(
         <>
             <NavBar/>
@@ -22,7 +33,7 @@ function Dashboard(){
                     </div>
                     <div className="row gap-2 mt-3">
                         <div className="col-6-sm col-8-md">
-                            <div className="card bg-white text-black" style={{width:'100%'}}>
+                            <div className="card bg-white text-black dashboard-transaction">
                                 <Transaction/>
                             </div>    
                         </div>

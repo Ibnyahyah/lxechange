@@ -27,7 +27,6 @@ function TradingModal({ coinName, CloseModal,TotalTradeInNGN, TotalTradeInUSD, T
   }
 
   const userEmail = user.email.split('.')[0];
-  console.log(userEmail)
 
 
   const SubmitHandler = async()=>{
@@ -37,7 +36,6 @@ function TradingModal({ coinName, CloseModal,TotalTradeInNGN, TotalTradeInUSD, T
         setLoading(true);
         navigate("/user/dashboard");
 
-    console.log(data);
     }
   }
 
@@ -98,7 +96,7 @@ function TradingModal({ coinName, CloseModal,TotalTradeInNGN, TotalTradeInUSD, T
                 <p className="text-red mt-1">In case you sent a different amount, send us a message, ls-eXchange will update accordingly.</p>
 
                 <div className="display-f text-white mt-3">
-                  <button className="btn-green m-1 ml-0" onClick={SubmitHandler}>{loading?'Loading':'Submit'}</button>
+                  <button className="btn-green m-1 ml-0" onClick={SubmitHandler}>{loading?'Loading...':'Submit'}</button>
                   <button className="btn-red m-1 mr-0" onClick={CloseModal}>
                     Close
                   </button>

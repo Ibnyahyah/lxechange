@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Footer from "../components/footer/footer";
 import NavBar from "../components/nav-bar/nav";
 import { RateData } from "../components/Rate/dummy";
@@ -7,7 +8,12 @@ import Transaction from "../components/transactions/transaction";
 
 function Trade(){
 
+    const location = useLocation()
+    const pathname = location.pathname.split("/")[0];
 
+    useEffect(()=>{
+        window.scrollTo(0,0);
+    },[pathname])
     
 
     return(

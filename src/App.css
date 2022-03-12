@@ -62,7 +62,7 @@ body{
 }
 .trading-coin input, .trading-coin form .p-input{
   width:48%;
-  padding:10px 2px;
+  padding:10px 5px 10px 5px;
   border:none;
   border-radius: 5px;
   color: black;
@@ -113,6 +113,11 @@ input{
 .searched-details, .trade-container form input{
   width:90%;
 }
+.dashboard-transaction{
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 15vh;
+}
 
 @media screen  and (max-width:720px){
   nav{
@@ -134,8 +139,30 @@ input{
   .trade-container .header{
     width: 100%;
   }
-  .trade-container form{
-    width: 100%;
+  .search-form{
+    width: 100% !important;;
+  }
+  .searched-details, .trade-container form input{
+    width:90%;
+  }
+  .trading-coin .form-card{
+    width: 81vw !important;;
+    margin:auto;
+    }
+  .trading-coin .form-card form{
+    width:100%;
+    margin:auto;
+    }
+  .trading-coin form .p-input{
+    margin-left: 2px;
+  }
+  .dashboard-transaction{
+    width: 81vw !important;;
+  }
+  .dashboard-transaction{
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 10vh;
   }
 
 }

@@ -12,7 +12,7 @@ export default function Rates({Rate}){
             <div className="row gap-1">
                 {RateData.map((data, index)=>{
                     return(
-                        <div className="col-3-xm col-3-sm col-3-md text-black" key={index}>
+                        <div className="col-6-xs col-6-sm col-3-md text-black" key={index}>
                             <div className="card bg-gray-light-9 text-center">
                                 <img className="br-full" src={data.image} style={{width:'100px', height:'100px'}} alt=""/>
                                 <h2>{data.coin}</h2>
