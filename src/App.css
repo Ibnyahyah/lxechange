@@ -118,6 +118,9 @@ input{
   overflow-y: scroll;
   height: 15vh;
 }
+::-webkit-scrollbar{
+  width:0;
+}
 
 @media screen  and (max-width:720px){
   nav{
