@@ -23,7 +23,7 @@ function Trading({TradingModal}) {
     },[amount])
   
   return (
-    <div className="container pt-5 pb-5 text-white">
+    <div className="container pt-5 pb-5 mt-3 text-white">
         <p className="mt-3 mb-1 font-4">Trade Your {pathname}</p>
       <p className="font-2 mb-2">
         Got questions? Call or Whatsapp 08129418741

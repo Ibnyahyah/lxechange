@@ -23,11 +23,11 @@ const SearchFilter =()=>{
                     <div>
                         {data.map((data, index)=>{
                     return(
-                        <div className="text-white p-1 searched-details" style={{background:'rgba(255, 255, 255, 0.288)'}} key={index}>
-                            <Link to={`/trade/coin/${data.symbol}`}>
-                                {data.coin}
-                            </Link>
-                        </div>
+                        <Link to={`/trade/coin/${data.symbol}`} key={index}>
+                            <div className="text-white p-1 searched-details" style={{background:'rgba(255, 255, 255, 0.288)'}}>
+                            {data.coin}
+                            </div>
+                        </Link>
                     )
                 })}
                     </div>:null

@@ -8,17 +8,17 @@ function Footer(){
                     <div className="row mb-2 justify-space-between">
                         <div className="col-6-sm col-6-sm">
                             <ul>
-                                <li className="font-4 font-lg">Company</li>
-                                <li>Contact us</li>
+                            <li className="font-4 font-lg">Learn</li>
+                                <li>Blog</li>
+                                <li>How To Buy and Sell</li>
                                 <li>About us</li>
-                                <li><Link to="/rate">Rates</Link></li>
+                                <li>Contact us</li>
                             </ul>
                         </div>
                         <div className="col-6-sm col-6-sm">
                             <ul>
-                                <li className="font-4 font-lg">Learn</li>
-                                <li>Blog</li>
-                                <li>How To Buy and Sell</li>
+                                <li className="font-4 font-lg">User</li>
+                                <li><Link to="/user/dashboard">User Dashboard</Link></li>
                                 <li><Link to="/rate">Rates</Link></li>
                             </ul>
                         </div>

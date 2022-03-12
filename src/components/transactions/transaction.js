@@ -32,8 +32,7 @@ function Transaction(){
     },[userEmail])
 
     return(
-        <>
-        <h1 className="mb-1 font-3 font-lg text-gray">Recent Transaction</h1>
+        <div className="trade-transaction">
             <table style={{width:'100%'}}>
                 <thead className="bg-black text-white">
                     <tr>
@@ -54,7 +53,7 @@ function Transaction(){
                         </tbody>
                     ))}
             </table>
-        </>
+        </div>
     )
 }
 export default Transaction;

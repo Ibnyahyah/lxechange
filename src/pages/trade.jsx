@@ -19,7 +19,7 @@ function Trade(){
     return(
         <>
             <NavBar/>
-            <div className="container pt-5 pb-5 text-white">
+            <div className="container pt-5 pb-5 mt-3 text-white">
                 <div className="display-f justify-space-between trade-container">
                     <div className="header">
                         <h1 className="font-4 font-xl">Trade Your Crypto(coins)</h1>
@@ -44,7 +44,10 @@ function Trade(){
                     )
                 })}
             </div>
-                <Transaction/>
+                <div>
+                    <h1 className="mb-1 font-3 font-lg text-gray">Recent Transaction</h1>
+                    <Transaction/>
+                </div>
             </div>
             <Footer/>
         </>

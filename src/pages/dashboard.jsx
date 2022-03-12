@@ -22,7 +22,7 @@ function Dashboard(){
     return(
         <>
             <NavBar/>
-            <div className="container-fluid pt-5 pb-5 text-white">
+            <div className="container-fluid pt-5 pb-5 mt-3 text-white">
                 <div className="container">
                     <div className="display-f">
                     <div className="header">
@@ -33,7 +33,8 @@ function Dashboard(){
                     </div>
                     <div className="row gap-2 mt-3">
                         <div className="col-6-sm col-8-md">
-                            <div className="card bg-white text-black dashboard-transaction">
+                            <div className="card bg-white text-black">
+                                <h1 className="mb-1 font-3 font-lg text-gray">Recent Transaction</h1>
                                 <Transaction/>
                             </div>    
                         </div>

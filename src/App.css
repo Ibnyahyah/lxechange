@@ -113,7 +113,7 @@ input{
 .searched-details, .trade-container form input{
   width:90%;
 }
-.dashboard-transaction{
+.trade-transaction{
   overflow: hidden;
   overflow-y: scroll;
   height: 15vh;
@@ -126,10 +126,6 @@ input{
   }
   .auth-logo{
     display: none;
-  }
-  .rates .card{
-    width: 93vwent;
-    margin:auto;
   }
   .trade-container{
     display:flex;
@@ -146,7 +142,7 @@ input{
     width:90%;
   }
   .trading-coin .form-card{
-    width: 81vw !important;;
+    width: 84vw !important;;
     margin:auto;
     }
   .trading-coin .form-card form{
@@ -157,11 +153,9 @@ input{
     margin-left: 2px;
   }
   .dashboard-transaction{
-    width: 81vw !important;;
+    width: 81vw !important;
   }
-  .dashboard-transaction{
-    overflow: hidden;
-    overflow-y: scroll;
+  .trade-transaction{
     height: 10vh;
   }
 
