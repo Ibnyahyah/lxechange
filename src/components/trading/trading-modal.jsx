@@ -47,27 +47,61 @@ function TradingModal({ coinName, CloseModal,TotalTradeInNGN, TotalTradeInUSD, T
           <div className="card bg-white text-black">
             {continueB ? (
               <div className="p-2">
-                <p className="font-2 font-md mb-1">
-                  Please transfer <b>${TotalTradeInUSD}</b> worth of{" "}
-                  <b>{coinName}</b> to the Wallet
-                  Address below. Please note, do not send below{" "}
-                  <b>${TotalTradeInUSD}</b> worth of{" "}
-                  <b>{coinName}</b>. We only credit what
-                  you send
-                </p>
-                <p className="mb-1">
-                    Wallet Address
-                    <br/>
-                    <span className="p-1 font-3 text-gray font-lg pl-0">Dudjusjsn293nAISJD</span>
-                </p>
-                <p className="mb-1 font-3 text-green">Summary</p>
-                <div className="display-f justify-space-between">
-                    <p>Amount In USD: <br/><b>${TotalTradeInUSD}</b></p>
-                    <p>Amount In NGN: <br/><b>&#8358;{TotalTradeInNGN}</b></p>
-                    <p>AMOUNT <b>$1.00 = &#8358;600</b></p>
-                </div>
+                {TradeType === 'Sell'?
+                  <>
+                    <p className="font-2 font-md mb-1">
+                      Please transfer <b>${TotalTradeInUSD}</b> worth of{" "}
+                      <b>{coinName}</b> to the Wallet
+                      Address below. Please note, do not send below{" "}
+                      <b>${TotalTradeInUSD}</b> worth of{" "}
+                      <b>{coinName}</b>. We only credit what
+                      you send
+                    </p>
+                    <p className="mb-1">
+                        Wallet Address
+                        <br/>
+                        <span className="p-1 font-3 text-gray font-lg pl-0">Dudjusjsn293nAISJD</span>
+                    </p>
+                    <p className="mb-1 font-3 text-green">Summary</p>
+                    <div className="display-f justify-space-between">
+                        <p>Amount In USD: <br/><b>${TotalTradeInUSD}</b></p>
+                        <p>Amount In NGN: <br/><b>&#8358;{TotalTradeInNGN}</b></p>
+                        <p>AMOUNT <b>$1.00 = &#8358;585</b></p>
+                    </div>
 
-                <p className="text-center mt-2 text-green">{coinName} WALLET ADDRESS Dudjusjsn293nAISJD</p>
+                    <p className="text-center mt-2 text-green">{coinName} WALLET ADDRESS Dudjusjsn293nAISJD</p>
+                  </>
+                  :TradeType === 'Buy'?
+                  <>
+                    <p className="font-2 font-md mb-1">
+                      Please transfer <b>&#8358;{TotalTradeInNGN}</b> to the Account
+                      Number below. Please note, do not send below{" "}
+                      <b>&#8358;{TotalTradeInNGN}</b> worth of{" "}
+                      <b>${TotalTradeInUSD}</b>. We only credit what
+                      you send
+                    </p>
+                    <div className="display-f justify-space-between">
+                      <p className="mb-1">
+                          Account Number
+                          <br/>
+                          <span className="p-1 font-3 text-gray font-lg pl-0">0000000001</span>
+                      </p>
+                      <p className="mb-1">
+                          Bank Name
+                          <br/>
+                          <span className="p-1 font-3 text-gray pl-0">Ramla(RML)</span>
+                      </p>
+                    </div>
+                    <p className="mb-1 font-3 text-green">Summary</p>
+                    <div className="display-f justify-space-between">
+                        <p>Amount In NGN: <br/><b>&#8358;{TotalTradeInNGN}</b></p>
+                        <p>Amount In USD: <br/><b>${TotalTradeInUSD}</b></p>
+                        <p>AMOUNT <b>$1.00 = &#8358;600</b></p>
+                    </div>
+
+                    <p className="text-center mt-2 text-green">You are Buying {coinName.toUpperCase()} worth of {TotalTradeInNGN}, You Paid to this Account Number 0000000001</p>
+                  </>
+                :null}
 
                 <div className="display-f text-white mt-3">
                   <button
@@ -86,15 +120,29 @@ function TradingModal({ coinName, CloseModal,TotalTradeInNGN, TotalTradeInUSD, T
               </div>
             ) : continueB === false && continueC ? (
               <div className="p-1">
-                <p className="font-2 font-md mb-1">
-                    If you have paid to our <b className="text-yellow">{coinName}</b> Wallet Address, upload a screenshot of your successful payment as proof.
-                </p>
-                    <div className="file">
-                        <input type="file" placeholder="Upload Your Payment Screenshot" />
-                    </div>
-                <p className="mt-1 mb-1 font-3 text-blue">Do not proceed with this process if you have not made your payment</p>
-                <p className="text-red mt-1">In case you sent a different amount, send us a message, ls-eXchange will update accordingly.</p>
-
+                {TradeType === 'Sell'?
+                  <>
+                    <p className="font-2 font-md mb-1">
+                        If you have paid to our <b className="text-yellow">{coinName}{" $"}{TotalTradeInUSD}</b> Wallet Address, upload a screenshot of your successful payment as proof.
+                    </p>
+                        <div className="file">
+                            <input type="file" placeholder="Upload Your Payment Screenshot" />
+                        </div>
+                    <p className="mt-1 mb-1 font-3 text-blue">Do not proceed with this process if you have not made your payment</p>
+                    <p className="text-red mt-1">In case you sent a different amount, send us a message, ls-eXchange will update accordingly.</p>
+                  </>
+                :TradeType === 'Buy'?
+                  <>
+                    <p className="font-2 font-md mb-1">
+                        If you have paid to our <b className="text-yellow">NGN {TotalTradeInNGN}</b> Account Number, upload a screenshot of your successful payment as proof.
+                    </p>
+                        <div className="file">
+                            <input type="file" placeholder="Upload Your Payment Screenshot" />
+                        </div>
+                    <p className="mt-1 mb-1 font-3 text-blue">Do not proceed with this process if you have not made your payment</p>
+                    <p className="text-red mt-1">In case you sent a different amount, send us a message, ls-eXchange will update accordingly.</p>
+                  </>  
+                :null}
                 <div className="display-f text-white mt-3">
                   <button className="btn-green m-1 ml-0" onClick={SubmitHandler}>{loading?'Loading...':'Submit'}</button>
                   <button className="btn-red m-1 mr-0" onClick={CloseModal}>
@@ -106,7 +154,7 @@ function TradingModal({ coinName, CloseModal,TotalTradeInNGN, TotalTradeInUSD, T
               <div>
                 <p className="font-2 font-md mb-1">
                   READ BEFORE YOU PROCEED WITH{" "}
-                  <b className="text-yellow">{coinName}</b> SALE
+                  <b className="text-yellow">{coinName.toUpperCase()}</b> TRANSACTION
                 </p>
                 <p className="mb-1">
                   Amount Receivable <b>&#8358;{TotalTradeInNGN}</b>
@@ -116,7 +164,7 @@ function TradingModal({ coinName, CloseModal,TotalTradeInNGN, TotalTradeInUSD, T
                 </p>
                 <p>
                   <Link to="/">
-                    By proceeding to sell on our website, you agree our terms
+                    By proceeding to {TradeType.toLowerCase()} on our website, you agree our terms
                     and condition
                   </Link>
                 </p>

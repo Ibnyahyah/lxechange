@@ -8,6 +8,7 @@ import Dashboard from './pages/dashboard';
 import Trade from './pages/trade';
 import { AuthProvider } from './context/authContext';
 import TradingCoin from './pages/trading-coin';
+import AccountSettings from './pages/accountSettings';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/user/dashboard" element={<Dashboard/>}/>
           <Route path="/trade" element={<Trade/>}/>
           <Route path="/trade/coin/:name" element={<TradingCoin/>}/>
+          <Route path="/account/settings" element={<AccountSettings/>}/>
         </Routes>
       </AuthProvider>
     </Router>

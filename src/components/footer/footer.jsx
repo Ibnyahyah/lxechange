@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 
+import { useAuth } from '../../context/authContext';
+
 function Footer(){
+    const {user} = useAuth()
     return(
         <>
             <div className="bg-black">
@@ -18,8 +21,13 @@ function Footer(){
                         <div className="col-6-sm col-6-sm">
                             <ul>
                                 <li className="font-4 font-lg">User</li>
-                                <li><Link to="/user/dashboard">User Dashboard</Link></li>
+                                {user?
+                                <>
+                                    <li><Link to="/user/dashboard">User Dashboard</Link></li>
+                                    <li><Link to="/account/settings">Accounts Settings</Link></li>
+                                </>:null}
                                 <li><Link to="/rate">Rates</Link></li>
+                                <li><Link to="/">Faqs</Link></li>
                             </ul>
                         </div>
                     </div>

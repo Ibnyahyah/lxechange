@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { Buy, Sell } from "../exchanges/exchanges";
 
 function Trading({TradingModal}) {
     const [modal, setModal] = useState(false);
@@ -18,9 +19,14 @@ function Trading({TradingModal}) {
     }
 
     useEffect(()=>{
-        const TotalTrade = amount * 600;
-        setTotal(TotalTrade)
-    },[amount])
+        if(tradeType === 'Sell'){
+            const TotalTrade = amount * 585;
+            setTotal(TotalTrade)
+        }else if(tradeType === 'Buy'){
+            const TotalTrade = amount * 600;
+            setTotal(TotalTrade)
+        }
+    },[amount, tradeType])
   
   return (
     <div className="container pt-5 pb-5 mt-3 text-white">
@@ -46,15 +52,7 @@ function Trading({TradingModal}) {
                             <button onClick={()=>setTradeType('Sell')}>Sell</button>
                             <button onClick={()=>setTradeType('Buy')}>Buy</button>
                         </div>
-                    <form onSubmit={(e)=>e.preventDefault()}>
-                            <label htmlFor="amount" className="text-black">Amount</label>
-                        <div className="display-f justify-space-between input-container">
-                            <input type="number" name="" id="amount" onChange={(e)=> setAmount(e.target.value)} />
-                            <p className="text-black p-input">&#8358;{total}</p> 
-                        </div>
-                        <p className="text-center mt-2 mb-1 text-green">Exchange Rate &#8358;600</p>
-                        <button className="btn-green" onClick={()=>setModal(true)}>Sell Now</button>
-                    </form>
+                    {tradeType === 'Sell'?<Sell setAmount={setAmount} setModal={setModal} total={total}/>:tradeType === 'Buy'?<Buy setAmount={setAmount} setModal={setModal} total={total}/>:null}
                 </div>    
             </div>  
             <div className="col-6-sm col-6-md text-black">
@@ -71,7 +69,7 @@ function Trading({TradingModal}) {
                     </button>
                     <button className="display-f justify-space-between">
                         <p>RATE</p>    
-                        <p>@&#8358;600/$</p>    
+                        <p>@&#8358;{tradeType === 'Sell'?585:tradeType === 'Buy'?600:null}/$</p>    
                     </button>
                 </div>    
             </div>  

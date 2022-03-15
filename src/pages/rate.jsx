@@ -6,11 +6,11 @@ import Footer from "../components/footer/footer";
 import { Link, useLocation } from "react-router-dom";
 
 // import axios from 'axios'; 
-import { useAuth } from "../context/authContext";
+// import { useAuth } from "../context/authContext";
 
 function Rate(){
 
-    const { user } = useAuth()
+    // const { user } = useAuth()
 
     const [exchangeCoin, setExchangeCoin] = useState('');
     const [amountRef, setAmountRef] = useState(0);
@@ -20,15 +20,15 @@ function Rate(){
 
     const location = useLocation();
     const pathname = location.pathname.split("/")[0];
-    const data = {
-        coin: exchangeCoin,
-        transcationType: transcationType,
-        Total: transcationvalue,
-        amountUsdt:  amountRef,
-        username:user.displayName,
-        email: user.email
-    }
-    console.log(data);
+    // const data = {
+    //     coin: exchangeCoin,
+    //     transcationType: transcationType,
+    //     Total: transcationvalue,
+    //     amountUsdt:  amountRef,
+    //     username:user.displayName,
+    //     email: user.email
+    // }
+    // console.log(data);
 
     useEffect(()=>{
         const totalvalue = Rate * amountRef;
@@ -74,6 +74,7 @@ function Rate(){
                                     <div className="m-1">
                                         <h1 className="font-4 font-xl">Total Payout</h1>
                                         <p className="font-xl text-green">NGN {transcationvalue? transcationvalue :'00.00'}</p>
+                                        <p className={transcationType === 'sell'?"text-red":"text-green"}>Transaction Type: {transcationType.toUpperCase()}</p>
                                         <p className="text-gray">Rate : #{Rate}</p>
                                     </div>
                                 </button>
