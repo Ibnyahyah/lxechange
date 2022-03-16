@@ -4,6 +4,9 @@
   left:0;
   right:0;
 }
+.menu-toggle{
+  display:none;
+}
 body{
   background-image: linear-gradient(10deg, black, rgb(13, 41, 58));
   background-repeat: no-repeat;
@@ -156,10 +159,24 @@ input{
   color:white;
 }
 
-@media screen  and (max-width:720px){
-  nav{
+@media screen  and (max-width:800px){
+  .menu-toggle{
+    display:block;
+  }
+  nav .menus{
     display:flex;
     flex-direction: column;
+    background-color:black;
+    padding:10px 5px;
+    position: absolute;
+    top:1;
+  }
+  nav .menus li{
+    margin-top:10px;
+    text-align: left !important;
+  }
+  nav .menus.notActive{
+    display:none;
   }
   .auth-logo{
     display: none;

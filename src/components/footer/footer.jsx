@@ -24,7 +24,7 @@ function Footer(){
                                 {user?
                                 <>
                                     <li><Link to="/user/dashboard">User Dashboard</Link></li>
-                                    <li><Link to="/account/settings">Accounts Settings</Link></li>
+                                    <li><Link to="/account/settings">Accounts</Link></li>
                                 </>:null}
                                 <li><Link to="/rate">Rates</Link></li>
                                 <li><Link to="/">Faqs</Link></li>

@@ -57,7 +57,7 @@ const HomePage = ()=>{
 
     return(
         <>
-            <NavBar/>
+            <NavBar Home/>
             <TopCarosel/>
             <Rates/>
             <WhyUs/>

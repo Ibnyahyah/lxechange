@@ -41,7 +41,7 @@ function Dashboard(){
                             <div className="col-6-sm col-4-md text-black">
                                 <div className="card bg-white">
                                     <div className="display-f justify-space-between">
-                                        <p className="font-1 font-lg">Complete Your <br/>Verification</p>
+                                        <p className="font-1 font-lg">COMPLETE YOUR <br/>VERIFICATION</p>
                                         {user.photoURL?
                                             <img src={user.photoURL} style={{width:'60px', height:'60px', border:'1px solid blue', borderRadius:'50%'}} alt={`${user.displayName} on lxExchange`} />
                                             :!user.photoURL?
@@ -50,10 +50,10 @@ function Dashboard(){
                                     </div>
                                     <hr className="mt-1 mb-1"/>
                                     <div className="doc">
-                                        <h3 style={{textAlign:'right'}}>{user.email?<p className="text-green font-md">E-mail Comfirmed</p> :<p className="text-red font-md">E-mail not comfirmed</p>}</h3>
-                                        <p className="mb-1 font-md text-gray"><span className="text-black">Your email:</span> {user.email} Basic account security</p>    
-                                        <h3>Comfirm Your e-mail</h3>
-                                        <p>Upload your Document and get verify</p>    
+                                        <h3 style={{textAlign:'right'}}>{user.email?<p className="text-green font-md">E-MAIL COMFIRM</p> :<p className="text-red font-md">E-MAIL NOT CONFIRM</p>}</h3>
+                                        <p className="mb-1 font-md text-gray"><span className="text-black">YOUR EMAIL:</span> {user.email} Basic account security</p>    
+                                        <h3>CONFIRM YOUR IDENTITY</h3>
+                                        <p>Upload your document and get verify</p>    
                                     </div>
                                 </div>
                             </div>

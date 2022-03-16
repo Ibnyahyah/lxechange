@@ -33,8 +33,8 @@ function Transaction(){
 
     return(
         <div className="trade-transaction">
-            <table style={{width:'100%'}}>
             {transactions <= 0?<p className="font-3 text-center text-black">Oopps No Transaction Record Found!!! Kindly Trade</p>:  
+            <table style={{width:'100%'}}>
             <>
                 <thead className="bg-black text-white">
                         <tr>
@@ -54,8 +54,9 @@ function Transaction(){
                                 </tr>
                             </tbody>
                         ))}
-                </>}
+                </>
             </table>
+            }
         </div>
     )
 }
