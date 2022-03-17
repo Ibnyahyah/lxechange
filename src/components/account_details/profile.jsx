@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../../context/authContext";
 import axios from "axios";
 
 function Profiles() {
-  const { user } = useAuth();
+  const { user, userDetailsDatas, loading } = useAuth();
 
   const [edit, setEdit] = useState(false);
   const [firstName, setFirstName] = useState("");
@@ -11,7 +11,6 @@ function Profiles() {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState(user.email);
   const [dateOfBirth, setDateOfBirth] = useState("");
-  const [datas, setDatas] = useState([]);
   const [text, setText] = useState("");
 
   const data = {
@@ -31,37 +30,22 @@ function Profiles() {
       data
     );
     setText("Profile Updated");
+    window.location.reload();
   };
-  useEffect(() => {
-    fetch(
-      `https://lsexchange-25610-default-rtdb.firebaseio.com/${userEmail}-profile.json`
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        const docs = [];
-        for (const key in data) {
-          const doc = {
-            id: key,
-            ...data[key],
-          };
-          docs.push(doc);
-          let docData = docs;
-          setDatas(docData);
-          console.log(docData);
-        }
-      });
-  }, [userEmail]);
 
+if(loading){
+  return
+}
   return (
     <>
       {!edit && (
         <>
-          {datas.map((data, index) => {
+          {userDetailsDatas.map((data, index) => {
             return (
-              <>
-                <div className="row gap-1">
+              <div key={index}>
+                {loading || userDetailsDatas.length < 1?<p className="text-center text-black pt-5 pb-5 font-3 font-lg">No Data or Loading Datas...</p>:
+                  <>
+                    <div className="row gap-1">
                   <div className="col-12-sm col-4-md col-4-lg">
                     <div className="input-container">
                       <label htmlFor="firstName">First Name</label>
@@ -99,17 +83,19 @@ function Profiles() {
                     </div>
                   </div>
                 </div>
-              </>
+                  </>
+                }
+              </div>
             );
           })}
           <button
             className="btn-red delete-btn text-white"
             onClick={() => setEdit(true)}
-            disabled={datas.length > 0 ? true : false}
+            disabled={userDetailsDatas.length > 0 ? true : false}
           >
-            {datas.length > 0 ? "Updated" : "Edit Profile"}
+            {userDetailsDatas.length > 0 ? "Updated" : "Edit Profile"}
           </button>
-          {datas.length > 0 ? (
+          {userDetailsDatas.length > 0 ? (
             <p className="mt-1 text-red font-sm">
               PLEASE CONTACT US IF YOU WANT TO UPDATE YOUR DETAILS.
             </p>
