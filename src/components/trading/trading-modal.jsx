@@ -44,8 +44,8 @@ function TradingModal({
   const SubmitHandler = async () => {
     if (
       user &&
-      !userAccountAddressDatas.length < 0 &&
-      !userDetailsDatas.length < 0
+      userAccountAddressDatas.length > -1 &&
+      userDetailsDatas.length > -1
     ) {
       await axios.post(
         `https://lsexchange-25610-default-rtdb.firebaseio.com/${userEmail}.json`,

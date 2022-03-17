@@ -28,13 +28,6 @@ export function Sell({ setModal, setAmount, total }) {
   );
 }
 export function Buy({ setModal, setAmount, total }) {
-  const userAccountAddressDatas = JSON.parse(
-    sessionStorage.getItem("userAccountAddressDatas")
-  );
-  const userDetailsDatas = JSON.parse(
-    sessionStorage.getItem("userDetails")
-  );
-  console.log(userAccountAddressDatas,userDetailsDatas)
   return (
     <>
       <form onSubmit={(e) => e.preventDefault()}>
