@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth } from "../../context/authContext";
 
 function AccountAddress() {
-  const { user, userAccountAddressDatas, loading } = useAuth();
+  const { user } = useAuth();
 
   const [text, setText] = useState("");
   const [edit, setEdit] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [btcAddress, setBtcAddress] = useState("");
   const [ethAddress, setEthAddress] = useState("");
   const [bnbAddress, setBnbAddress] = useState("");
@@ -16,6 +17,7 @@ function AccountAddress() {
   const [bankName, setBankName] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
   const [accountName, setAccountName] = useState("");
+  const [userAccountAddressDatas, setUserAccountAddressDatas] = useState([]);
 
   const userEmail = user.email.split(".")[0];
 
@@ -39,6 +41,29 @@ function AccountAddress() {
     setText("Account and Address Updated");
     window.location.reload();
   };
+  //   Fecthing user account and address details
+  useEffect(() => {
+      fetch(
+        `https://lsexchange-25610-default-rtdb.firebaseio.com/${user.email.split('.')[0]}-account-address.json`
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          const docs = [];
+          for (const key in data) {
+            const doc = {
+              id: key,
+              ...data[key],
+            };
+            docs.push(doc);
+            let docData = docs;
+            sessionStorage.setItem('userAccountAndAddress',JSON.stringify(docData))
+            setUserAccountAddressDatas(docData);
+            setLoading(false)
+          }
+        });
+  }, [user]);
 
   return (
     <>

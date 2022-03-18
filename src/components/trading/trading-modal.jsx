@@ -73,10 +73,8 @@ function TradingModal({
   const userPros = userDetailsDatas[0];
 
   useEffect(() => {
-    if (user) {
       setUserAccAdd(userAccAdds);
       setUserPro(userPros);
-    }
   }, [userPros, userAccAdds, user]);
 
   return (

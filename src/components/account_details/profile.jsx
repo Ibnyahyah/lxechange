@@ -1,17 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../context/authContext";
 import axios from "axios";
 
 function Profiles() {
-  const { user, userDetailsDatas, loading } = useAuth();
+  const { user } = useAuth();
 
   const [edit, setEdit] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState(user.email);
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [text, setText] = useState("");
+  const [userDetailsDatas, setUserDetailsDatas] = useState([]);
 
   const data = {
     firstName: firstName,
@@ -32,6 +34,33 @@ function Profiles() {
     setText("Profile Updated");
     window.location.reload();
   };
+
+  // Fecthing user detail from firebase database
+
+  useEffect(() => {
+    fetch(
+      `https://lsexchange-25610-default-rtdb.firebaseio.com/${user.email.split('.')[0]}-profile.json`
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        const docs = [];
+        for (const key in data) {
+          const doc = {
+            id: key,
+            ...data[key],
+          };
+          docs.push(doc);
+          let docData = docs;
+          sessionStorage.setItem('userDetails',JSON.stringify(docData));
+          setUserDetailsDatas(docData);
+          setLoading(false);
+        }
+      });
+}, [user]);
+
+
 
 if(loading){
   return
